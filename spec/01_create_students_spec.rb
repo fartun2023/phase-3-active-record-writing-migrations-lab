@@ -1,12 +1,10 @@
-require_relative '../db/migrate/01_create_students'
+# spec/migrations/create_students_spec.rb
 
-describe CreateStudents do
+require 'rails_helper'
+
+RSpec.describe 'CreateStudents', type: :migration do
   before do
-    sql = "DROP TABLE IF EXISTS students"
-    ActiveRecord::Base.connection.execute(sql)
-    
-    # Manually runs the migration
-    CreateStudents.new.change
+    ActiveRecord::Migration.maintain_test_schema!
   end
 
   it 'has a name' do
